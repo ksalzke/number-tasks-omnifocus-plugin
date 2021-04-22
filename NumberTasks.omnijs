@@ -1,25 +1,27 @@
+/* global PlugIn */
+/* eslint spaced-comment: ["error", "always", { "exceptions": ["{"] }] */
 /*{
-	"type": "action",
-	"targets": ["omnifocus"],
-	"author": "Kaitlin Salzke",
-	"identifier": "com.KaitlinSalzke.NumberTasks",
-	"version": "1.0",
-	"description": "Prepend tasks with numbers",
-	"label": "Number Tasks",
-	"shortLabel": "Number Tasks"
+"type": "action",
+"targets": ["omnifocus"],
+"author": "Kaitlin Salzke",
+"identifier": "com.KaitlinSalzke.NumberTasks",
+"version": "1.0",
+"description": "Prepend tasks with numbers",
+"label": "Number Tasks",
+"shortLabel": "Number Tasks"
 }*/
 (() => {
-  var action = new PlugIn.Action(function (selection, sender) {
-    var count = 1;
+  const action = new PlugIn.Action(function (selection, sender) {
+    let count = 1
 
     selection.tasks.forEach(function (task) {
-      task.name = task.name.replace(/^(\d*\. |^)/, count++ + ". ");
-    });
-  });
+      task.name = task.name.replace(/^(\d*\. |^)/, count++ + '. ')
+    })
+  })
 
   action.validate = function (selection, sender) {
-    return selection.tasks.length > 0;
-  };
+    return selection.tasks.length > 0
+  }
 
-  return action;
-})();
+  return action
+})()
